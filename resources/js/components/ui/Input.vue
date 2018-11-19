@@ -1,9 +1,18 @@
 <template>
     <div class="input" :class="{ 'has-error': hasError, 'vertical': vertical }">
-        <label :for="name">{{ label }}</label>
+        <label :for="name" v-if="hasLabel">{{ label }}</label>
         <div class="input-wrapper" :class="{ 'has-icon': hasIcon }">
             <icon v-if="hasIcon" :icon="icon"></icon>
-            <input :id="name" :name="name" :type="type" :required="required" :placeholder="placeholder" :value="value">
+            <input
+                :id="name"
+                :name="name"
+                :type="type"
+                :required="required"
+                :placeholder="placeholder"
+                :value="value"
+                v-model="inputValue"
+                @input="$emit('input', inputValue)"
+                @blur="$emit('blur')">
         </div>
         <div v-if="hasError" class="error-msg">
             {{ error }}
@@ -36,13 +45,22 @@ export default {
             type: Boolean
         }
     },
+    data () {
+        return {
+            inputValue: "",
+        }
+    },
     computed: {
         hasIcon() {
             return this.icon !== undefined;
         },
         hasError() {
             return this.error !== undefined;
+        },
+        hasLabel() {
+            return this.label !== undefined;
         }
+        
     },
 }
 </script>
@@ -51,6 +69,10 @@ export default {
 
 .input {
     @apply flex flex-wrap justify-end items-center mb-2;
+}
+
+.input.mb-0 {
+    @apply mb-0;
 }
 
 .input.has-error > label {

@@ -17,4 +17,11 @@ class ProductController extends Controller
             'newItemsCount' => Auth::user()->getNumberOfItems()
         ];
     }
+
+    public function removeFromCart(Request $request, Product $product)
+    {
+        Auth::user()->cart()->detach($product);
+
+        return redirect()->route('checkout');
+    }
 }

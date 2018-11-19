@@ -4,7 +4,7 @@
 
 <script>
 
-import { faUser, faLock, faEnvelope, faShoppingCart  } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faLock, faEnvelope, faShoppingCart, faAddressCard, faCreditCard, faCalendarAlt, faTrash, faSearch  } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 export default {
@@ -15,7 +15,12 @@ export default {
                 'user': faUser,
                 'lock': faLock,
                 'envelope': faEnvelope,
-                'cart': faShoppingCart
+                'cart': faShoppingCart,
+                'address': faAddressCard,
+                'credit-card': faCreditCard,
+                'calendar': faCalendarAlt,
+                'trash': faTrash,
+                'search': faSearch
             }
         }
     },

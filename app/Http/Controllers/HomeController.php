@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Order;
+use App\Mail\OrderSuccessMail;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -23,22 +26,20 @@ class HomeController extends Controller
     }
 
     public function checkout()
-    {
-        $items = Auth::user()->cart;
-
-        $cart = [];
-
-        foreach ($items as $item) {
-            if (array_key_exists($item->id, $cart)) {
-                $cart[$item->id]['quantity'] += 1;
-            } else {
-                $cart[$item->id] = $item;
-                $cart[$item->id]['quantity'] = 1;
-            }
-        }
-        
+    {        
         return view('checkout', [
-            'cart' => $cart
+            'cart' => Auth::user()->getCart()
         ]);
+    }
+
+    public function createOrder(Request $request)
+    {
+        $order = Auth::user()->orders()->save(Order::make($request->all()));
+
+        $mail = new OrderSuccessMail($order);
+
+        Mail::to($request->email)->send($mail);
+
+        return redirect()->route('home');
     }
 }

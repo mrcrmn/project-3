@@ -4,6 +4,9 @@
             <a href="{{ route('home') }}" class="no-underline text-blue-darker text-2xl font-bold py-3">
                 Webshop
             </a>
+            <div class="w-1/3 px-2">
+                <search-bar action="{{ route('search') }}"></search-bar>
+            </div>
             <div>
                 @guest
                     <ui-button href="{{ route('login') }}" class="mr-2" simple>{{ __('Login') }}</ui-button>

@@ -18,6 +18,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('icon', require('./components/Icon.vue'));
+Vue.component('search-bar', require('./components/SearchBar.vue'));
 Vue.component('add-to-cart', require('./components/AddToCartBtn.vue'));
 Vue.component('ui-button', require('./components/ui/Button.vue'));
 Vue.component('ui-card', require('./components/ui/Card.vue'));

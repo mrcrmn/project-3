@@ -33,6 +33,11 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Product', 'cart');
     }
 
+    public function orders()
+    {
+        return $this->hasMany('App\Order');
+    }
+
     public function getCartTotal()
     {
         $total = $this->cart->sum('price');
@@ -42,6 +47,23 @@ class User extends Authenticatable
 
     public function getNumberOfItems()
     {
-        return $this->cart->count() . ' Items';
+        $count = $this->cart->count();
+        return $count  . ' Item' . ($count !== 1 ? 's' : '');
+    }
+
+    public function getCart()
+    {
+        $cart = [];
+
+        foreach ($this->cart as $item) {
+            if (array_key_exists($item->id, $cart)) {
+                $cart[$item->id]['quantity'] += 1;
+            } else {
+                $cart[$item->id] = $item;
+                $cart[$item->id]['quantity'] = 1;
+            }
+        }
+
+        return $cart;
     }
 }

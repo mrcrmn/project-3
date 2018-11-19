@@ -25,6 +25,7 @@
         "@fortawesome/vue-fontawesome": "^0.1.2",
         "laravel-mix-purgecss": "^3.0.0",
         "laravel-mix-tailwindcss": "^0.1.0",
+        "mark.js": "^8.11.1",
         "tailwindcss": "^0.7.2"
     }
 }
