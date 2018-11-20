@@ -119,6 +119,20 @@ input:focus {
     @apply w-full;
 }
 
+@media screen and (max-width: 576px) {
+    .input label {
+    @apply mb-2;
+}
+
+.input label, .input .input-wrapper {
+    @apply w-full;
+}
+
+.input {
+    @apply mb-4;
+}
+}
+
 </style>
 
 

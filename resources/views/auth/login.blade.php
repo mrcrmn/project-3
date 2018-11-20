@@ -3,8 +3,8 @@
 @section('content')
 
 <div class="container mx-auto">
-    <div class="flex justify-center">
-        <ui-card class="w-2/5">
+    <div class="flex justify-center px-2">
+        <ui-card class="w-full md:w-2/5">
             <template slot="heading">
                 {{ __('Login') }}
             </template>

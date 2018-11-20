@@ -9,7 +9,7 @@
                     <template slot="heading">{{ $product->name }}</template>
                     <div slot="body" class="">
                         <div class="-mx-4 -mt-4 mb-4">
-                        <img src="https://loremflickr.com/320/240/nature?id={{ $loop->index }}" alt="">
+                        <img src="https://loremflickr.com/500/360/nature?id={{ $loop->index }}" alt="">
                         </div>
                         <div class="flex justify-between">
                             <div class="text-grey-blue-darker uppercase font-semibold">

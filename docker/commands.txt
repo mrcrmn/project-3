@@ -2,6 +2,6 @@ docker pull mysql:5.7
 docker run --name shop-mysql -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_DATABASE=shop -d mysql:5.7
 
 docker build apache2
-docker run --name webshop --link shop-mysql:mysql -p 8888:80 <container_id>
+docker run --name shop-app --link shop-mysql:mysql -p 8888:80 <container_id>
 
-docker exec -it webshop bash
+docker exec -it shop-app bash

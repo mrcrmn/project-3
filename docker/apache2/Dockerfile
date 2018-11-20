@@ -13,7 +13,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 RUN cd /var/www && git clone https://github.com/mrcrmn/project-3.git
 
-RUN cd /var/www/project-3 && composer install --no-dev
+RUN cd /var/www/project-3 && composer install
 ADD env-example /var/www/project-3/.env
 
 RUN chmod -R 777 /var/www/project-3/storage
